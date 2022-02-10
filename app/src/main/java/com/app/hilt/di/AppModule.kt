@@ -42,14 +42,17 @@ object AppModule {
 
   @Provides
   @Singleton
-  fun providerRequestManager(@ApplicationContext appContext: Context): RequestManager {
-    return Glide.with(appContext).applyDefaultRequestOptions(providerRequestOptions())
+  fun providerRequestManager(context: Context): RequestManager {
+    return Glide.with(context).applyDefaultRequestOptions(providerRequestOptions())
   }
 
   @Provides
   fun provideNamesAdapter() : NamesAdapter{
     return NamesAdapter()
   }
+
+  @Provides
+  fun provideContext(@ApplicationContext context: Context) : Context = context
 
 
 }
